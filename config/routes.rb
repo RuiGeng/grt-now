@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :vehicle_trips
   resources :vehicle_stop_times
   resources :vehicle_stops
   resources :vehicle_routes

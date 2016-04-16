@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vehicle_route_id: 
+  service: MyString
+  name: MyString
+  direction: 1
+
+two:
+  vehicle_route_id: 
+  service: MyString
+  name: MyString
+  direction: 1
