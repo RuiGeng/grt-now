@@ -1,9 +1,5 @@
 namespace :grtrobot do
   
-  require 'protobuf'
-  require 'google/transit/gtfs-realtime.pb'
-  require 'net/http'
-  require 'uri'
   require 'smarter_csv'
   
   task pull_real_time: :environment do
@@ -66,7 +62,7 @@ namespace :grtrobot do
         obj = VehicleStopTime.new
         obj.departure_time = h[:departure_time]
         obj.vehicle_stop_id = h[:stop_id]
-        obj.trip_id = h[:trip_id]
+        obj.vehicle_trip_id = h[:trip_id]
         obj.sequence = h[:stop_sequence]
         obj.save()
         

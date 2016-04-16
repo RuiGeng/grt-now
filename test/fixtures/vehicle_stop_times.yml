@@ -3,11 +3,11 @@
 one:
   departure_time: MyString
   vehicle_stop_id: 
-  trip_id: 1
+  vehicle_trip_id: 
   sequence: 1
 
 two:
   departure_time: MyString
   vehicle_stop_id: 
-  trip_id: 1
+  vehicle_trip_id: 
   sequence: 1

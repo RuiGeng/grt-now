@@ -22,6 +22,10 @@ class VehicleStopTimesController < ApplicationController
   # GET /vehicle_stop_times/1
   # GET /vehicle_stop_times/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render :json => @vehicle_stop_time.to_json(:include => [:vehicle_trip, :vehicle_stop]) }
+    end
   end
 
   # GET /vehicle_stop_times/new
@@ -81,6 +85,6 @@ class VehicleStopTimesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_stop_time_params
-      params.require(:vehicle_stop_time).permit(:departure_time, :vehicle_stop_id, :trip_id, :sequence)
+      params.require(:vehicle_stop_time).permit(:departure_time, :vehicle_stop_id, :vehicle_trip_id, :sequence)
     end
 end

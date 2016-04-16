@@ -5,11 +5,20 @@ class VehicleRealtimesController < ApplicationController
   # GET /vehicle_realtimes.json
   def index
     @vehicle_realtimes = VehicleRealtime.all
+    
+    respond_to do |format|
+      format.html
+      format.json { render :json => @vehicle_realtimes.to_json(:include => [:vehicle_trip, :vehicle_route, :vehicle_stop]) }
+    end
   end
 
   # GET /vehicle_realtimes/1
   # GET /vehicle_realtimes/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render :json => @vehicle_realtime.to_json(:include => [:vehicle_trip, :vehicle_route, :vehicle_stop]) }
+    end
   end
 
   # GET /vehicle_realtimes/new

@@ -18,7 +18,7 @@ class VehicleStopTimesControllerTest < ActionController::TestCase
 
   test "should create vehicle_stop_time" do
     assert_difference('VehicleStopTime.count') do
-      post :create, vehicle_stop_time: { departure_time: @vehicle_stop_time.departure_time, sequence: @vehicle_stop_time.sequence, trip_id: @vehicle_stop_time.trip_id, vehicle_stop_id: @vehicle_stop_time.vehicle_stop_id }
+      post :create, vehicle_stop_time: { departure_time: @vehicle_stop_time.departure_time, sequence: @vehicle_stop_time.sequence, vehicle_stop_id: @vehicle_stop_time.vehicle_stop_id, vehicle_trip_id: @vehicle_stop_time.vehicle_trip_id }
     end
 
     assert_redirected_to vehicle_stop_time_path(assigns(:vehicle_stop_time))
@@ -35,7 +35,7 @@ class VehicleStopTimesControllerTest < ActionController::TestCase
   end
 
   test "should update vehicle_stop_time" do
-    patch :update, id: @vehicle_stop_time, vehicle_stop_time: { departure_time: @vehicle_stop_time.departure_time, sequence: @vehicle_stop_time.sequence, trip_id: @vehicle_stop_time.trip_id, vehicle_stop_id: @vehicle_stop_time.vehicle_stop_id }
+    patch :update, id: @vehicle_stop_time, vehicle_stop_time: { departure_time: @vehicle_stop_time.departure_time, sequence: @vehicle_stop_time.sequence, vehicle_stop_id: @vehicle_stop_time.vehicle_stop_id, vehicle_trip_id: @vehicle_stop_time.vehicle_trip_id }
     assert_redirected_to vehicle_stop_time_path(assigns(:vehicle_stop_time))
   end
 

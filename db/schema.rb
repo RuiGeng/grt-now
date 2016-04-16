@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416033741) do
+ActiveRecord::Schema.define(version: 20160416044154) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -55,13 +55,14 @@ ActiveRecord::Schema.define(version: 20160416033741) do
   create_table "vehicle_stop_times", force: :cascade do |t|
     t.string   "departure_time",  limit: 255
     t.integer  "vehicle_stop_id", limit: 4
-    t.integer  "trip_id",         limit: 4
+    t.integer  "vehicle_trip_id", limit: 4
     t.integer  "sequence",        limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
 
   add_index "vehicle_stop_times", ["vehicle_stop_id"], name: "index_vehicle_stop_times_on_vehicle_stop_id", using: :btree
+  add_index "vehicle_stop_times", ["vehicle_trip_id"], name: "index_vehicle_stop_times_on_vehicle_trip_id", using: :btree
 
   create_table "vehicle_stops", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -86,5 +87,6 @@ ActiveRecord::Schema.define(version: 20160416033741) do
   add_foreign_key "vehicle_realtimes", "vehicle_stops"
   add_foreign_key "vehicle_realtimes", "vehicle_trips"
   add_foreign_key "vehicle_stop_times", "vehicle_stops"
+  add_foreign_key "vehicle_stop_times", "vehicle_trips"
   add_foreign_key "vehicle_trips", "vehicle_routes"
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :vehicle_stop_times
   get 'vehicle_realtimes/pull', to: 'vehicle_realtimes#pull'
   
   resources :vehicle_realtimes

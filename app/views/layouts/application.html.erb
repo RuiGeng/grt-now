@@ -7,6 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+<nav>
+  <%= link_to 'Routes', vehicle_routes_path %>
+  <%= link_to 'Stop Times', vehicle_stop_times_path %>
+  <%= link_to 'Stops', vehicle_stops_path %>
+  <%= link_to 'Trips', vehicle_trips_path %>
+  <%= link_to 'Realtime', vehicle_realtimes_path %>
+</nav>  
 
 <%= yield %>
 
