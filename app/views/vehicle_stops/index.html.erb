@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Vehicle Stops</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Lat</th>
+      <th>Long</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehicle_stops.each do |vehicle_stop| %>
+      <tr>
+        <td><%= vehicle_stop.name %></td>
+        <td><%= vehicle_stop.lat %></td>
+        <td><%= vehicle_stop.long %></td>
+        <td><%= link_to 'Show', vehicle_stop %></td>
+        <td><%= link_to 'Edit', edit_vehicle_stop_path(vehicle_stop) %></td>
+        <td><%= link_to 'Destroy', vehicle_stop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vehicle stop', new_vehicle_stop_path %>

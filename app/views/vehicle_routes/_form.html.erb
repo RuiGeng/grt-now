@@ -1,0 +1,21 @@
+<%= form_for(@vehicle_route) do |f| %>
+  <% if @vehicle_route.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vehicle_route.errors.count, "error") %> prohibited this vehicle_route from being saved:</h2>
+
+      <ul>
+      <% @vehicle_route.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :long_name %><br>
+    <%= f.text_field :long_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

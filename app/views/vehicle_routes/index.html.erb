@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Vehicle Routes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Long name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehicle_routes.each do |vehicle_route| %>
+      <tr>
+        <td><%= vehicle_route.long_name %></td>
+        <td><%= link_to 'Show', vehicle_route %></td>
+        <td><%= link_to 'Edit', edit_vehicle_route_path(vehicle_route) %></td>
+        <td><%= link_to 'Destroy', vehicle_route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vehicle route', new_vehicle_route_path %>
