@@ -17,7 +17,7 @@
     <% @vehicle_stop_times.each do |vehicle_stop_time| %>
       <tr>
         <td><%= vehicle_stop_time.departure_time %></td>
-        <td><%= vehicle_stop_time.vehicle_stop %></td>
+        <td><%= vehicle_stop_time.vehicle_stop.name %></td>
         <td><%= vehicle_stop_time.trip_id %></td>
         <td><%= vehicle_stop_time.sequence %></td>
         <td><%= link_to 'Show', vehicle_stop_time %></td>
@@ -27,6 +27,8 @@
     <% end %>
   </tbody>
 </table>
+
+<%= will_paginate @vehicle_trips %>
 
 <br>
 

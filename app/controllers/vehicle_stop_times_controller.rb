@@ -4,7 +4,19 @@ class VehicleStopTimesController < ApplicationController
   # GET /vehicle_stop_times
   # GET /vehicle_stop_times.json
   def index
-    @vehicle_stop_times = VehicleStopTime.all
+    @vehicle_stop_times = VehicleStopTime.paginate(:page => params[:page])
+    
+    respond_to do |format|
+      format.html { render :index }
+      format.json {
+        render :json => {
+          :current_page => @vehicle_stop_times.current_page,
+          :per_page => @vehicle_stop_times.per_page,
+          :total_entries => @vehicle_stop_times.total_entries,
+          :entries => @vehicle_stop_times
+        }
+      }
+    end
   end
 
   # GET /vehicle_stop_times/1

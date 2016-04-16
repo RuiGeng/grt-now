@@ -7,21 +7,7 @@ namespace :grtrobot do
   require 'smarter_csv'
   
   task pull_real_time: :environment do
-    
-    puts '[x] Pulling realtime data... '
-    
-    data = Net::HTTP.get(URI.parse("http://192.237.29.212:8080/gtfsrealtime/VehiclePositions"))
-    feed = Transit_realtime::FeedMessage.decode(data)
-    
-    puts '[x] Done'
-    
-    for entity in feed.entity do
-      
-      if entity.field?(:vehicle)
-        p "trip_id: #{entity.vehicle.trip.trip_id} route_id: #{entity.vehicle.trip.route_id} (#{entity.vehicle[:current_status]}):  #{entity.vehicle.position.latitude}, #{entity.vehicle.position.longitude} -- stop_id: #{entity.vehicle.stop_id}"
-      end
-    end
-    
+    VehicleRealtime.pull_real_time()
   end
   
   task import_grt_routes: :environment do

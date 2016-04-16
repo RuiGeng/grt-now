@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vehicle trip:</strong>
+  <%= @vehicle_realtime.vehicle_trip %>
+</p>
+
+<p>
+  <strong>Vehicle route:</strong>
+  <%= @vehicle_realtime.vehicle_route %>
+</p>
+
+<p>
+  <strong>Vehicle stop:</strong>
+  <%= @vehicle_realtime.vehicle_stop %>
+</p>
+
+<p>
+  <strong>Current status:</strong>
+  <%= @vehicle_realtime.current_status %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @vehicle_realtime.lat %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @vehicle_realtime.long %>
+</p>
+
+<%= link_to 'Edit', edit_vehicle_realtime_path(@vehicle_realtime) %> |
+<%= link_to 'Back', vehicle_realtimes_path %>

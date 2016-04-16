@@ -16,7 +16,7 @@
   <tbody>
     <% @vehicle_trips.each do |vehicle_trip| %>
       <tr>
-        <td><%= vehicle_trip.vehicle_route %></td>
+        <td><%= vehicle_trip.vehicle_route.long_name %></td>
         <td><%= vehicle_trip.service %></td>
         <td><%= vehicle_trip.name %></td>
         <td><%= vehicle_trip.direction %></td>
@@ -27,6 +27,8 @@
     <% end %>
   </tbody>
 </table>
+
+<%= will_paginate @vehicle_trips %>
 
 <br>
 

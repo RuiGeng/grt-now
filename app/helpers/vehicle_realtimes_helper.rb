@@ -1,0 +1,2 @@
+module VehicleRealtimesHelper
+end

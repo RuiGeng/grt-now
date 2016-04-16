@@ -4,7 +4,19 @@ class VehicleRoutesController < ApplicationController
   # GET /vehicle_routes
   # GET /vehicle_routes.json
   def index
-    @vehicle_routes = VehicleRoute.all
+    @vehicle_routes = VehicleRoute.paginate(:page => params[:page])
+    
+    respond_to do |format|
+      format.html { render :index }
+      format.json {
+        render :json => {
+          :current_page => @vehicle_routes.current_page,
+          :per_page => @vehicle_routes.per_page,
+          :total_entries => @vehicle_routes.total_entries,
+          :entries => @vehicle_routes
+        }
+      }
+    end
   end
 
   # GET /vehicle_routes/1
