@@ -17,13 +17,16 @@ class VehicleRealtime < ActiveRecord::Base
     for entity in feed.entity do
       
       if entity.field?(:vehicle)
-        obj = VehicleRealtime.new
-        obj.vehicle_route_id = entity.vehicle.trip.route_id
-        obj.vehicle_trip_id = entity.vehicle.trip.trip_id
-        obj.current_status = entity.vehicle.current_status
-        obj.lat = entity.vehicle.position.latitude
-        obj.long = entity.vehicle.position.longitude
-        obj.save()
+        begin
+          obj = VehicleRealtime.new
+          obj.vehicle_route_id = entity.vehicle.trip.route_id
+          obj.vehicle_trip_id = entity.vehicle.trip.trip_id
+          obj.current_status = entity.vehicle.current_status
+          obj.lat = entity.vehicle.position.latitude
+          obj.long = entity.vehicle.position.longitude
+          obj.save()
+        rescue
+        end
       end
     end
   end
