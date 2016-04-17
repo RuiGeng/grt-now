@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get 'vehicle_realtimes/pull', to: 'vehicle_realtimes#pull'
   
   resources :vehicle_realtimes
-  resources :vehicle_trips
   resources :vehicle_stops
   resources :vehicle_stop_times
   resources :vehicle_trips
@@ -12,9 +11,11 @@ Rails.application.routes.draw do
   
   namespace :api do
     resources :vehicle_realtimes
-    resources :vehicle_trips
     resources :vehicle_stops
     resources :vehicle_stop_times
+  
+    get 'vehicle_trips/search', to: 'vehicle_trips#search'
+    
     resources :vehicle_trips
     resources :vehicle_routes
   end

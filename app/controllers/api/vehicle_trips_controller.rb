@@ -10,10 +10,29 @@ class Api::VehicleTripsController < ApplicationController
       :entries => @vehicle_trips
     }
   end
-
-  def show
+  
+  def search
+    query = {}
+    
+    if(params[:vehicle_route_id])
+      query["vehicle_route_id"] = params[:vehicle_route_id]
+    end
+    
+    @vehicle_trips = VehicleTrip.where(query).paginate(:page => params[:page])
+    
+    #@.paginate(:page => params[:page])
+    
     render :json => {
-      :entry => VehicleTrip.find(params[:id])
+      :current_page => nil,
+      :per_page => nil,
+      :total_entries => nil,
+      :entries => @vehicle_trips
     }
   end
+
+  #def show
+  #  render :json => {
+  #    :entry => VehicleTrip.find(params[:id])
+  #  }
+  #end
 end
