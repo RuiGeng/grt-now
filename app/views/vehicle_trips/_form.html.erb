@@ -1,33 +1,38 @@
-<%= form_for(@vehicle_trip) do |f| %>
-  <% if @vehicle_trip.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@vehicle_trip.errors.count, "error") %> prohibited this vehicle_trip from being saved:</h2>
-
-      <ul>
-      <% @vehicle_trip.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="form-group row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@vehicle_trip) do |f| %>
+      <% if @vehicle_trip.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@vehicle_trip.errors.count, "error") %> prohibited this vehicle_trip from being saved:</h2>
+    
+          <ul>
+          <% @vehicle_trip.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :vehicle_route_id %><br>
-    <%= f.text_field :vehicle_route_id %>
+    
+      <div class="field">
+        <%= f.label :vehicle_route_id %><br>
+        <%= f.text_field :vehicle_route_id, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= f.label :service %><br>
+        <%= f.text_field :service, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= f.label :direction %><br>
+        <%= f.number_field :direction, class: "form-control" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Update Vehicle Trip", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    <%= link_to 'Back', vehicle_trips_path %>
   </div>
-  <div class="field">
-    <%= f.label :service %><br>
-    <%= f.text_field :service %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :direction %><br>
-    <%= f.number_field :direction %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

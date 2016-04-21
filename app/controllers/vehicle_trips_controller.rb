@@ -1,10 +1,11 @@
 class VehicleTripsController < ApplicationController
+  before_action :is_admin, only: [:index, :show, :edit, :update, :destroy]
   before_action :set_vehicle_trip, only: [:show, :edit, :update, :destroy]
 
   # GET /vehicle_trips
   # GET /vehicle_trips.json
   def index
-    @vehicle_trips = VehicleTrip.paginate(:page => params[:page])
+    @vehicle_trips = VehicleTrip.paginate(:page => params[:page], :per_page => 5)
     
     respond_to do |format|
       format.html { render :index }
@@ -54,7 +55,7 @@ class VehicleTripsController < ApplicationController
   def update
     respond_to do |format|
       if @vehicle_trip.update(vehicle_trip_params)
-        format.html { redirect_to @vehicle_trip, notice: 'Vehicle trip was successfully updated.' }
+        format.html { redirect_to vehicle_trips_path, notice: 'Vehicle trip was successfully updated.' }
         format.json { render :show, status: :ok, location: @vehicle_trip }
       else
         format.html { render :edit }
@@ -82,5 +83,11 @@ class VehicleTripsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_trip_params
       params.require(:vehicle_trip).permit(:vehicle_route_id, :service, :name, :direction)
+    end
+    
+    def is_admin
+      if current_user && !current_user.isadmin
+        redirect_to root_url
+      end
     end
 end

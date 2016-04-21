@@ -1,0 +1,22 @@
+<li id="trip-<%= vehicle_trip.id %>">
+  <span class="content">
+    <strong>Vehicle Trip ID: </strong><%= vehicle_trip.id %>
+  </span>
+  <span class="content">
+    <strong>Vehicle Route Name: </strong><%= vehicle_trip.vehicle_route.long_name %>
+  </span>
+  <span class="content">
+    <strong>Service: </strong><%= vehicle_trip.service %>
+  </span>
+  <span class="content">
+    <strong>Trip Name: </strong><%= vehicle_trip.name %>
+  </span>
+  <span class="content">
+    <strong>Direction: </strong><%= vehicle_trip.direction %>
+  </span>
+  <span class="timestamp">
+    Created <%= time_ago_in_words(vehicle_trip.created_at) %> ago.
+  </span>
+  <span class="trip"><%= link_to 'Edit', edit_vehicle_trip_path(vehicle_trip), :class => 'btn btn-sm btn-primary'  %></span>
+  <span class="trip"><%= link_to 'Destroy', vehicle_trip, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %></span>
+</li>

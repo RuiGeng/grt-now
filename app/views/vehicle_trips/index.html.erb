@@ -1,35 +1,15 @@
-<p id="notice"><%= notice %></p>
+<h1>Manage All Trips</h1>
 
-<h1>Listing Vehicle Trips</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Vehicle route</th>
-      <th>Service</th>
-      <th>Name</th>
-      <th>Direction</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @vehicle_trips.each do |vehicle_trip| %>
-      <tr>
-        <td><%= vehicle_trip.vehicle_route.long_name %></td>
-        <td><%= vehicle_trip.service %></td>
-        <td><%= vehicle_trip.name %></td>
-        <td><%= vehicle_trip.direction %></td>
-        <td><%= link_to 'Show', vehicle_trip %></td>
-        <td><%= link_to 'Edit', edit_vehicle_trip_path(vehicle_trip) %></td>
-        <td><%= link_to 'Destroy', vehicle_trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= will_paginate @vehicle_trips %>
-
-<br>
-
-<%= link_to 'New Vehicle trip', new_vehicle_trip_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <% if @vehicle_trips.any? %>
+        <h3>Number of Trips: <%= @vehicle_trips.count %></h3>
+        <ol class="trips">
+          <%= render @vehicle_trips %>
+        </ol>
+        <%= will_paginate @vehicle_trips %>
+      <% end %>
+    </div>
+  </div>
+</div>
