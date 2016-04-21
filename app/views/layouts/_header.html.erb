@@ -1,0 +1,25 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "GRT.Now", root_path %>
+    <nav>
+      <ul class="nav navbar-nav">
+        <li><%= link_to "HOME", root_path %></li>
+        <li><%= link_to "CONTACT", '#' %></li>
+      </ul> 
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <%if current_user.admin %>
+            <li><%= link_to "Manage Users", users_path %></li>
+            <li><%= link_to "Manage Routes", users_path %></li>
+          <% end %>
+          <li><%= link_to "Manage Favorites", current_user %></li>
+          <li><%= link_to "Update Account", edit_user_registration_path(@user) %></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <% else  %>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign in', user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

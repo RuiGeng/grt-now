@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <title>GRT.Now</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-<nav>
-  <%= link_to 'Routes', vehicle_routes_path %>
-  <%= link_to 'Stop Times', vehicle_stop_times_path %>
-  <%= link_to 'Stops', vehicle_stops_path %>
-  <%= link_to 'Trips', vehicle_trips_path %>
-  <%= link_to 'Realtime', vehicle_realtimes_path %>
-</nav>  
-
-<%= yield %>
-
+  <%= render 'layouts/header' %>
+  <div class="container">
+    
+    <% if notice -%>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end -%>
+    
+    <% if alert -%>
+      <p class="alert alert-warning"><%= alert %></p>
+    <% end -%>
+    
+    <%= yield %>
+  </div>
 </body>
 </html>
