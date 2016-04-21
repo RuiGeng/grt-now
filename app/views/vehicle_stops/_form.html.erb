@@ -1,29 +1,34 @@
-<%= form_for(@vehicle_stop) do |f| %>
-  <% if @vehicle_stop.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@vehicle_stop.errors.count, "error") %> prohibited this vehicle_stop from being saved:</h2>
-
-      <ul>
-      <% @vehicle_stop.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="form-group row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@vehicle_stop) do |f| %>
+      <% if @vehicle_stop.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@vehicle_stop.errors.count, "error") %> prohibited this vehicle_stop from being saved:</h2>
+    
+          <ul>
+          <% @vehicle_stop.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= f.label :Latitude %><br>
+        <%= f.text_field :lat, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= f.label :Longitude %><br>
+        <%= f.text_field :long, class: "form-control" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Update Vehicle Stop", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    <%= link_to 'Back', vehicle_stops_path %>
   </div>
-  <div class="field">
-    <%= f.label :lat %><br>
-    <%= f.text_field :lat %>
-  </div>
-  <div class="field">
-    <%= f.label :long %><br>
-    <%= f.text_field :long %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

@@ -1,10 +1,11 @@
 class VehicleStopsController < ApplicationController
+  before_action :is_admin, only: [:index, :show, :edit, :update, :destroy]
   before_action :set_vehicle_stop, only: [:show, :edit, :update, :destroy]
 
   # GET /vehicle_stops
   # GET /vehicle_stops.json
   def index
-    @vehicle_stops = VehicleStop.paginate(:page => params[:page])
+    @vehicle_stops = VehicleStop.paginate(:page => params[:page], :per_page => 5)
     
     respond_to do |format|
       format.html { render :index }
@@ -54,7 +55,7 @@ class VehicleStopsController < ApplicationController
   def update
     respond_to do |format|
       if @vehicle_stop.update(vehicle_stop_params)
-        format.html { redirect_to @vehicle_stop, notice: 'Vehicle stop was successfully updated.' }
+        format.html { redirect_to vehicle_stops_path, notice: 'Vehicle stop was successfully updated.' }
         format.json { render :show, status: :ok, location: @vehicle_stop }
       else
         format.html { render :edit }
@@ -82,5 +83,11 @@ class VehicleStopsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_stop_params
       params.require(:vehicle_stop).permit(:name, :lat, :long)
+    end
+    
+    def is_admin
+      if current_user && !current_user.isadmin
+        redirect_to root_url
+      end
     end
 end

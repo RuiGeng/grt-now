@@ -61,3 +61,24 @@ body {
     display: block;
   }
 }
+
+/* stops */
+.stops {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .stop {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+  }
+}
