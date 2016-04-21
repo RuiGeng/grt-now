@@ -1,35 +1,15 @@
-<p id="notice"><%= notice %></p>
+<h1>Manage All Stop Time</h1>
 
-<h1>Listing Vehicle Stop Times</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Departure time</th>
-      <th>Vehicle stop</th>
-      <th>Vehicle trip</th>
-      <th>Sequence</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @vehicle_stop_times.each do |vehicle_stop_time| %>
-      <tr>
-        <td><%= vehicle_stop_time.departure_time %></td>
-        <td><%= vehicle_stop_time.vehicle_stop.name %></td>
-        <td><%= vehicle_stop_time.vehicle_trip.name %></td>
-        <td><%= vehicle_stop_time.sequence %></td>
-        <td><%= link_to 'Show', vehicle_stop_time %></td>
-        <td><%= link_to 'Edit', edit_vehicle_stop_time_path(vehicle_stop_time) %></td>
-        <td><%= link_to 'Destroy', vehicle_stop_time, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= will_paginate @vehicle_trips %>
-
-<br>
-
-<%= link_to 'New Vehicle stop time', new_vehicle_stop_time_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <% if @vehicle_stop_times.any? %>
+        <h3>Number of Trips: <%= @vehicle_stop_times.count %></h3>
+        <ol class="times">
+          <%= render @vehicle_stop_times %>
+        </ol>
+        <%= will_paginate @vehicle_stop_times %>
+      <% end %>
+    </div>
+  </div>
+</div>

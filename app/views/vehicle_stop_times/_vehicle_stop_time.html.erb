@@ -1,0 +1,22 @@
+<li id="time-<%= vehicle_stop_time.id %>">
+  <span class="content">
+    <strong>Vehicle Stop Time ID: </strong><%= vehicle_stop_time.id %>
+  </span>
+  <span class="content">
+    <strong>Departure Time: </strong><%= vehicle_stop_time.departure_time %>
+  </span>
+  <span class="content">
+    <strong>Vehicle Stop Name: </strong><%= vehicle_stop_time.vehicle_stop.name %>
+  </span>
+  <span class="content">
+    <strong>Vehicle trip Name: </strong><%= vehicle_stop_time.vehicle_trip.name %>
+  </span>
+  <span class="content">
+    <strong>Sequence: </strong><%= vehicle_stop_time.sequence %>
+  </span>
+  <span class="timestamp">
+    Created <%= time_ago_in_words(vehicle_stop_time.created_at) %> ago.
+  </span>
+  <span class="trip"><%= link_to 'Edit', edit_vehicle_stop_time_path(vehicle_stop_time), :class => 'btn btn-sm btn-primary'  %></span>
+  <span class="trip"><%= link_to 'Destroy', vehicle_stop_time, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %></span>
+</li>

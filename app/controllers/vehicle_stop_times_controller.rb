@@ -58,7 +58,7 @@ class VehicleStopTimesController < ApplicationController
   def update
     respond_to do |format|
       if @vehicle_stop_time.update(vehicle_stop_time_params)
-        format.html { redirect_to @vehicle_stop_time, notice: 'Vehicle stop time was successfully updated.' }
+        format.html { redirect_to vehicle_stop_times_path, notice: 'Vehicle stop time was successfully updated.' }
         format.json { render :show, status: :ok, location: @vehicle_stop_time }
       else
         format.html { render :edit }

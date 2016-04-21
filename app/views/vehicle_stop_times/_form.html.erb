@@ -1,33 +1,38 @@
-<%= form_for(@vehicle_stop_time) do |f| %>
-  <% if @vehicle_stop_time.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@vehicle_stop_time.errors.count, "error") %> prohibited this vehicle_stop_time from being saved:</h2>
-
-      <ul>
-      <% @vehicle_stop_time.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="form-group row">
+  <div class="form-group">
+    <%= form_for(@vehicle_stop_time) do |f| %>
+      <% if @vehicle_stop_time.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@vehicle_stop_time.errors.count, "error") %> prohibited this vehicle_stop_time from being saved:</h2>
+    
+          <ul>
+          <% @vehicle_stop_time.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :departure_time %><br>
-    <%= f.text_field :departure_time %>
+    
+      <div class="form-group col-lg-6 col-md-6 col-sm-6">
+        <%= f.label :departure_time %><br>
+        <%= f.text_field :departure_time, class: "form-control" %>
+      </div>
+      <div class="form-group col-lg-6 col-md-6 col-sm-6">
+        <%= f.label :vehicle_stop_id %><br>
+        <%= f.text_field :vehicle_stop_id, class: "form-control" %>
+      </div>
+      <div class="form-group col-lg-6 col-md-6 col-sm-6">
+        <%= f.label :vehicle_trip_id %><br>
+        <%= f.text_field :vehicle_trip_id, class: "form-control" %>
+      </div>
+      <div class="form-group col-lg-6 col-md-6 col-sm-6">
+        <%= f.label :sequence %><br>
+        <%= f.number_field :sequence, class: "form-control" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Update Vehicle Stop Time", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    <%= link_to 'Back', vehicle_stop_times_path %>
   </div>
-  <div class="field">
-    <%= f.label :vehicle_stop_id %><br>
-    <%= f.text_field :vehicle_stop_id %>
-  </div>
-  <div class="field">
-    <%= f.label :vehicle_trip_id %><br>
-    <%= f.text_field :vehicle_trip_id %>
-  </div>
-  <div class="field">
-    <%= f.label :sequence %><br>
-    <%= f.number_field :sequence %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
