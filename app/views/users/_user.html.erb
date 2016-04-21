@@ -1,0 +1,16 @@
+<li id="user-<%= user.id %>">
+  <span class="content">
+    <strong>User ID: </strong><%= user.id %>
+  </span>
+  <span class="content">
+    <strong>User Name: </strong><%= user.name %>
+  </span>
+  <span class="content">
+    <strong>User Email: </strong><%= user.email %>
+  </span>
+  <span class="timestamp">
+    Created <%= time_ago_in_words(user.created_at) %> ago.
+  </span>
+  <span><%= link_to 'Edit', edit_user_path(user), :class => 'btn btn-sm btn-warning' %></span>
+  <span><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %></span>
+</li>

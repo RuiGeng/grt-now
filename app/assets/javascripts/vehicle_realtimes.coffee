@@ -6,5 +6,5 @@ $(document).ready ->
   setInterval (->
     window.location.href = '/vehicle_realtimes/pull'
     return
-  ), 10000
+  ), 1000000
   return

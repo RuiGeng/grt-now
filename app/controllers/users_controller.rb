@@ -12,9 +12,9 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     if current_user.isadmin?
-      #logic here
+      @users = User.all
     else
-      #logic here
+      redirect_to root_url
     end
   end
   
