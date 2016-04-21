@@ -16,12 +16,11 @@
 
 
 body {
-  padding-top: 60px;
+  padding-top: 200px;
 }
 
 
 /* users */
-
 .users {
   list-style: none;
   padding: 0;
@@ -30,6 +29,27 @@ body {
     border-top: 1px solid #e8e8e8;
   }
   .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+  }
+}
+
+/* routes */
+.routes {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .route {
     margin-top: 5em;
     padding-top: 0;
   }

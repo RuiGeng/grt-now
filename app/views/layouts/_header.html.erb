@@ -10,9 +10,13 @@
         <% if user_signed_in? %>
           <%if current_user.isadmin %>
             <li><%= link_to "Manage Users", users_path %></li>
-            <li><%= link_to "Manage Routes", users_path %></li>
+            <li><%= link_to "Manage Routes", vehicle_routes_path %></li>
+            <li><%= link_to "Manage Stops", vehicle_stops_path %></li>
+            <li><%= link_to "Manage Trips", vehicle_trips_path %></li>
+            <li><%= link_to "Manage Stop Times", vehicle_stop_times_path %></li>
+          <% else  %>
+            <li><%= link_to "Manage Favorites", '#' %></li>
           <% end %>
-          <li><%= link_to "Manage Favorites", '#' %></li>
           <li><%= link_to "Update Account", edit_user_registration_path(@user) %></li>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <% else  %>

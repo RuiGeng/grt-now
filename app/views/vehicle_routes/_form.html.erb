@@ -1,21 +1,26 @@
-<%= form_for(@vehicle_route) do |f| %>
-  <% if @vehicle_route.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@vehicle_route.errors.count, "error") %> prohibited this vehicle_route from being saved:</h2>
-
-      <ul>
-      <% @vehicle_route.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="form-group row">
+  <div class="col-md-6 col-md-offset-3">
+  <%= form_for(@vehicle_route) do |f| %>
+    <% if @vehicle_route.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@vehicle_route.errors.count, "error") %> prohibited this vehicle_route from being saved:</h2>
+  
+        <ul>
+        <% @vehicle_route.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= f.label :long_name %><br>
+      <%= f.text_field :long_name, class: "form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Update Vehicle Route", class: "btn btn-primary" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :long_name %><br>
-    <%= f.text_field :long_name %>
+    <%= link_to 'Back', vehicle_routes_path %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

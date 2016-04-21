@@ -11,6 +11,6 @@
   <span class="timestamp">
     Created <%= time_ago_in_words(user.created_at) %> ago.
   </span>
-  <span><%= link_to 'Edit', edit_user_path(user), :class => 'btn btn-sm btn-warning' %></span>
+  <span><%= link_to 'Edit', edit_user_path(user), :class => 'btn btn-sm btn-primary' %></span>
   <span><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %></span>
 </li>

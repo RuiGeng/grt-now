@@ -1,0 +1,13 @@
+<li id="route-<%= vehicle_route.id %>">
+  <span class="content">
+    <strong>Vehicle Route ID: </strong><%= vehicle_route.id %>
+  </span>
+  <span class="content">
+    <strong>Vehicle Route Name: </strong><%= vehicle_route.long_name %>
+  </span>
+  <span class="timestamp">
+    Created <%= time_ago_in_words(vehicle_route.created_at) %> ago.
+  </span>
+  <span class="route"><%= link_to 'Edit', edit_vehicle_route_path(vehicle_route), :class => 'btn btn-sm btn-primary'  %></span>
+  <span class="route"><%= link_to 'Destroy', vehicle_route, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %></span>
+</li>
