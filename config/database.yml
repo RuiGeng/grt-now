@@ -4,11 +4,14 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
+
 default: &default
   adapter: mysql2
-  pool: 5
+  encoding: utf8
   database: c9
-  username: manelpb
+  username: <%=ENV['C9_USER']%>
+  host: <%=ENV['IP']%>
+  pool: 5
   timeout: 5000
 
 development:
