@@ -26,9 +26,9 @@ class VehicleStopsController < ApplicationController
   end
 
   # GET /vehicle_stops/new
-  def new
-    @vehicle_stop = VehicleStop.new
-  end
+  # def new
+  #   @vehicle_stop = VehicleStop.new
+  # end
 
   # GET /vehicle_stops/1/edit
   def edit

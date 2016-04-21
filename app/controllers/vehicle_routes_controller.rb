@@ -26,9 +26,9 @@ class VehicleRoutesController < ApplicationController
   end
 
   # GET /vehicle_routes/new
-  def new
-    @vehicle_route = VehicleRoute.new
-  end
+  # def new
+  #   @vehicle_route = VehicleRoute.new
+  # end
 
   # GET /vehicle_routes/1/edit
   def edit

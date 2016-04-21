@@ -29,9 +29,9 @@ class VehicleStopTimesController < ApplicationController
   end
 
   # GET /vehicle_stop_times/new
-  def new
-    @vehicle_stop_time = VehicleStopTime.new
-  end
+  # def new
+  #   @vehicle_stop_time = VehicleStopTime.new
+  # end
 
   # GET /vehicle_stop_times/1/edit
   def edit

@@ -22,9 +22,9 @@ class VehicleRealtimesController < ApplicationController
   end
 
   # GET /vehicle_realtimes/new
-  def new
-    @vehicle_realtime = VehicleRealtime.new
-  end
+  # def new
+  #   @vehicle_realtime = VehicleRealtime.new
+  # end
 
   # GET /vehicle_realtimes/pull
   def pull
