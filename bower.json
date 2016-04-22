@@ -1,0 +1,21 @@
+{
+  "name": "grt-now",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "1.5.3",
+    "angular-animate": "1.5.3",
+    "angular-google-maps": "^2.3.2",
+    "angular-route": "1.5.3",
+    "angular-resource": "1.5.3",
+    "Materialize": "materialize#^0.97.6",
+    "angular-ui-router": "^0.2.18",
+    "angular-filter": "^0.5.8",
+    "satellizer": "^0.14.0",
+    "ng-token-auth": "^0.0.28"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.5.3"
+  },
+  "appPath": "app",
+  "moduleName": "grtNowApp"
+}

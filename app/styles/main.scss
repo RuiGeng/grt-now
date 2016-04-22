@@ -1,0 +1,54 @@
+// bower:scss
+// endbower
+
+/**
+* Hide when Angular is not yet loaded and initialized
+*/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.angular-google-map-container {
+  height: 800px;
+  width: 100%;
+  position: absolute;
+  /*z-index: -1;*/
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.sidebar {
+  margin-right: -12px;
+  margin-top: 10px;
+}
+
+.nav-wrapper {
+  padding: 0 30px;
+}
+
+.pos-rel {
+  position: relative;
+}
+
+.pos-abs {
+  position: absolute;
+}
+
+.search-box {
+  top: 15px;
+  left: 25px;
+  padding: 2px;
+  z-index: 2;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.search-box input {
+}
+
+.search-box .row {
+  margin-bottom: 0;
+}
+
+.search-box button {
+  margin-top: 10px;
+}

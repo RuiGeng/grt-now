@@ -1,0 +1,34 @@
+<div class="row" ng-show="!stops.spinner">
+  <div class="col s10">
+    <span>{{ stops.entries[0].vehicle_stop.name }} </span>
+  </div>
+  <div class="col s2 right-align">
+    <a ui-sref="main"><i class="material-icons">close</i></a>
+  </div>
+</div>
+<div class="row" ng-show="!stops.spinner">
+  <div class="col s12">
+    <span>Bus Schedule</span>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="s12 center" ng-show="stops.spinner">
+    <div class="preloader-wrapper small active">
+      <div class="spinner-layer spinner-green-only">
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="collection" ng-show="!stops.spinner">
+    <li class="collection-item" ng-repeat="stop in stops.entries | orderBy : '+departure_time'">
+      <span>{{ stop.departure_time }}</span>
+      <br />
+      <small>{{ stop.vehicle_trip.name }}</small>
+    </li>
+  </ul>
+</div>
