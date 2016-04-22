@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users Favorite Routes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Vehicle route</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users_favorite_routes.each do |users_favorite_route| %>
+      <tr>
+        <td><%= users_favorite_route.user %></td>
+        <td><%= users_favorite_route.vehicle_route %></td>
+        <td><%= link_to 'Show', users_favorite_route %></td>
+        <td><%= link_to 'Edit', edit_users_favorite_route_path(users_favorite_route) %></td>
+        <td><%= link_to 'Destroy', users_favorite_route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Users favorite route', new_users_favorite_route_path %>

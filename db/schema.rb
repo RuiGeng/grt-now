@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421025107) do
+ActiveRecord::Schema.define(version: 20160422034448) do
+
+  create_table "user_favorite_routes", force: :cascade do |t|
+    t.integer  "user_id",          limit: 4
+    t.integer  "vehicle_route_id", limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "user_favorite_routes", ["user_id"], name: "index_user_favorite_routes_on_user_id", using: :btree
+  add_index "user_favorite_routes", ["vehicle_route_id"], name: "index_user_favorite_routes_on_vehicle_route_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255,                 null: false
@@ -85,6 +95,8 @@ ActiveRecord::Schema.define(version: 20160421025107) do
 
   add_index "vehicle_trips", ["vehicle_route_id"], name: "index_vehicle_trips_on_vehicle_route_id", using: :btree
 
+  add_foreign_key "user_favorite_routes", "users"
+  add_foreign_key "user_favorite_routes", "vehicle_routes"
   add_foreign_key "vehicle_realtimes", "vehicle_routes"
   add_foreign_key "vehicle_realtimes", "vehicle_stops"
   add_foreign_key "vehicle_realtimes", "vehicle_trips"

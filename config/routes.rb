@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :users_favorite_routes
   resources :vehicle_stop_times, only: [:index, :show, :edit, :update, :destroy]
   get 'vehicle_realtimes/pull', to: 'vehicle_realtimes#pull'
   
@@ -23,9 +24,12 @@ Rails.application.routes.draw do
     
     get 'auth/authenticate'
     post 'auth/authenticate'
-    get 'users', to: 'users#index'
+    get 'user', to: 'users#index'
+    
+    get 'user/favorite_routes', to: 'users_favorite_routes#index'
+    post 'user/favorite_routes', to: 'users_favorite_routes#create'
+    
   end
-  
 
-  root      "home#index"
+  root "home#index"
 end

@@ -13,13 +13,14 @@
             
             <% if user_signed_in? %>
               <%if current_user.isadmin %>
-                <li><%= link_to "Manage Users", users_path %></li>
-                <li><%= link_to "Manage Routes", vehicle_routes_path %></li>
-                <li><%= link_to "Manage Stops", vehicle_stops_path %></li>
-                <li><%= link_to "Manage Trips", vehicle_trips_path %></li>
-                <li><%= link_to "Manage Stop Times", vehicle_stop_times_path %></li>
+                <li><%= link_to "Users", users_path %></li>
+                <li><%= link_to "Routes", vehicle_routes_path %></li>
+                <li><%= link_to "Trips", vehicle_trips_path %></li>
+                <li><%= link_to "Stops", vehicle_stops_path %></li>
+                <li><%= link_to "Stop Times", vehicle_stop_times_path %></li>
+                <li><%= link_to "Real Times", vehicle_realtimes_path %></li>
               <% else  %>
-                <li><%= link_to "Manage Favorites", '#' %></li>
+                <li><%= link_to "My Favorite Routes", '#' %></li>
               <% end %>
             <% else  %>
               <li><%= link_to 'Sign up', new_user_registration_path %></li>
