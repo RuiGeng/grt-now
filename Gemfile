@@ -29,6 +29,16 @@ gem 'devise'
 
 gem 'smarter_csv'
 
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'httpclient'
+
+gem 'jwt'
+
+
+gem 'devise_token_auth'
+gem 'rack-cors', :require => 'rack/cors'
+
 gem 'will_paginate', '~> 3.0.6'
 
 # Use ActiveModel has_secure_password
