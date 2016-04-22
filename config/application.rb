@@ -23,11 +23,16 @@ module Workspace
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     
-    config.action_dispatch.default_headers.merge!({
-      'Access-Control-Allow-Origin' => '*',
-      'Access-Control-Request-Method' => '*'
-    })
-    
     config.time_zone = 'Eastern Time (US & Canada)'
+    
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          :headers => :any,
+          :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          :methods => [:get, :post, :options, :delete, :put]
+      end
+    end
   end
 end

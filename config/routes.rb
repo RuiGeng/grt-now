@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :vehicle_stop_times, only: [:index, :show, :edit, :update, :destroy]
   resources :vehicle_trips, only: [:index, :show, :edit, :update, :destroy]
   resources :vehicle_routes, only: [:index, :show, :edit, :update, :destroy]
+  devise_for :users, :controllers => {registrations: 'registrations'}
+  resources :users, only: [:index, :show, :edit, :update, :destroy]
   
   namespace :api do
     resources :vehicle_realtimes, only: [:index, :show, :edit, :update, :destroy]
@@ -18,10 +20,12 @@ Rails.application.routes.draw do
     
     resources :vehicle_trips, only: [:index, :show, :edit, :update, :destroy]
     resources :vehicle_routes, only: [:index, :show, :edit, :update, :destroy]
+    
+    get 'auth/authenticate'
+    post 'auth/authenticate'
+    get 'users', to: 'users#index'
   end
   
-  devise_for :users, :controllers => {registrations: 'registrations'}
-  resources :users, only: [:index, :show, :edit, :update, :destroy]
-  
+
   root      "home#index"
 end

@@ -31,6 +31,10 @@ gem 'smarter_csv'
 
 gem 'will_paginate', '~> 3.0.6'
 
+gem 'httpclient'
+gem 'jwt'
+gem 'rack-cors', :require => 'rack/cors'
+
 gem 'bootstrap-sass', '~> 3.3.6'
 
 # Use ActiveModel has_secure_password

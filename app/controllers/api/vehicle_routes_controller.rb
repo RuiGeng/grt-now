@@ -1,4 +1,5 @@
 class Api::VehicleRoutesController < ApplicationController
+  skip_before_filter :authenticate_user!
 
   def index
     @vehicle_routes = VehicleRoute.paginate(:page => params[:page])

@@ -1,3 +1,6 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,15 +13,33 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require_tree .
+ *= require_self
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
 
-
-body {
-  padding-top: 200px;
+a.btn-primary, a.btn-info, a.btn-danger {
+    color: #fff;
 }
 
+footer {
+    border-top: 1px solid #e0e0e0;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+header {
+    .navbar-default {
+        background: #000;
+    }
+    
+    .navbar-default .navbar-nav>li>a {
+        color: #fff;
+    }
+    
+    .navbar-default .navbar-nav>li>a:hover {
+        color: #777;
+    }
+}
 
 /* users */
 .users {

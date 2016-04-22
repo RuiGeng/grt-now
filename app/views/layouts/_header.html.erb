@@ -1,29 +1,58 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "GRT.Now", root_path %>
-    <nav>
-      <ul class="nav navbar-nav">
-        <li><%= link_to "HOME", root_path %></li>
-        <li><%= link_to "CONTACT", '#' %></li>
-      </ul> 
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <%if current_user.isadmin %>
-            <li><%= link_to "Manage Users", users_path %></li>
-            <li><%= link_to "Manage Routes", vehicle_routes_path %></li>
-            <li><%= link_to "Manage Stops", vehicle_stops_path %></li>
-            <li><%= link_to "Manage Trips", vehicle_trips_path %></li>
-            <li><%= link_to "Manage Stop Times", vehicle_stop_times_path %></li>
-          <% else  %>
-            <li><%= link_to "Manage Favorites", '#' %></li>
-          <% end %>
-          <li><%= link_to "Update Account", edit_user_registration_path(@user) %></li>
-          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-        <% else  %>
-          <li><%= link_to 'Sign up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign in', user_session_path %></li>
-        <% end %>
-      </ul>
+<header>
+    <div class="logo"></div>
+    <div class="banner"></div>
+    
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li>
+               <%= link_to('Home', root_path)  %>  
+            </li>
+            
+            <% if user_signed_in? %>
+              <%if current_user.isadmin %>
+                <li><%= link_to "Manage Users", users_path %></li>
+                <li><%= link_to "Manage Routes", vehicle_routes_path %></li>
+                <li><%= link_to "Manage Stops", vehicle_stops_path %></li>
+                <li><%= link_to "Manage Trips", vehicle_trips_path %></li>
+                <li><%= link_to "Manage Stop Times", vehicle_stop_times_path %></li>
+              <% else  %>
+                <li><%= link_to "Manage Favorites", '#' %></li>
+              <% end %>
+            <% else  %>
+              <li><%= link_to 'Sign up', new_user_registration_path %></li>
+              <li><%= link_to 'Sign in', user_session_path %></li>
+            <% end %>
+  
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right">
+            
+            <% if user_signed_in? %>
+              <li>
+                <p class="navbar-text">
+                  Welcome <%= current_user.name %>
+                </p>
+              </li>
+              <li>
+                <%= link_to('My profile', edit_user_registration_path) %>
+              </li>
+              <li>
+                <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+              </li>
+            <% else %>
+              <li>
+                <%= link_to('Register', new_user_registration_path)  %>
+              </li>
+              <li>
+                <%= link_to('Login', new_user_session_path)  %>  
+              </li>
+            <% end %>
+  
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
     </nav>
-  </div>
-</header>
+  </header>
