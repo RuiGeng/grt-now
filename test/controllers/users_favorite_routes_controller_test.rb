@@ -2,13 +2,13 @@ require 'test_helper'
 
 class UsersFavoriteRoutesControllerTest < ActionController::TestCase
   setup do
-    @users_favorite_route = users_favorite_routes(:one)
+    @user_favorite_route = user_favorite_routes(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:users_favorite_routes)
+    assert_not_nil assigns(:user_favorite_routes)
   end
 
   test "should get new" do
@@ -16,34 +16,34 @@ class UsersFavoriteRoutesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create users_favorite_route" do
+  test "should create user_favorite_route" do
     assert_difference('UsersFavoriteRoute.count') do
-      post :create, users_favorite_route: { user_id: @users_favorite_route.user_id, vehicle_route_id: @users_favorite_route.vehicle_route_id }
+      post :create, user_favorite_route: { user_id: @user_favorite_route.user_id, vehicle_route_id: @user_favorite_route.vehicle_route_id }
     end
 
-    assert_redirected_to users_favorite_route_path(assigns(:users_favorite_route))
+    assert_redirected_to user_favorite_route_path(assigns(:user_favorite_route))
   end
 
-  test "should show users_favorite_route" do
-    get :show, id: @users_favorite_route
+  test "should show user_favorite_route" do
+    get :show, id: @user_favorite_route
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @users_favorite_route
+    get :edit, id: @user_favorite_route
     assert_response :success
   end
 
-  test "should update users_favorite_route" do
-    patch :update, id: @users_favorite_route, users_favorite_route: { user_id: @users_favorite_route.user_id, vehicle_route_id: @users_favorite_route.vehicle_route_id }
-    assert_redirected_to users_favorite_route_path(assigns(:users_favorite_route))
+  test "should update user_favorite_route" do
+    patch :update, id: @user_favorite_route, user_favorite_route: { user_id: @user_favorite_route.user_id, vehicle_route_id: @user_favorite_route.vehicle_route_id }
+    assert_redirected_to user_favorite_route_path(assigns(:user_favorite_route))
   end
 
-  test "should destroy users_favorite_route" do
+  test "should destroy user_favorite_route" do
     assert_difference('UsersFavoriteRoute.count', -1) do
-      delete :destroy, id: @users_favorite_route
+      delete :destroy, id: @user_favorite_route
     end
 
-    assert_redirected_to users_favorite_routes_path
+    assert_redirected_to user_favorite_routes_path
   end
 end

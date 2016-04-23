@@ -20,7 +20,7 @@ class Api::UsersFavoriteRoutesController < ApplicationController
   
   def create
     if @current_user
-        @user_favorite_route = UserFavoriteRoute.new(users_favorite_route_params)
+        @user_favorite_route = UserFavoriteRoute.new(user_favorite_route_params)
         @user_favorite_route.user_id = @current_user.id
     
       if @user_favorite_route.save
@@ -41,8 +41,8 @@ class Api::UsersFavoriteRoutesController < ApplicationController
         @current_user = User.find(payload.user_id) if payload.valid?
     end
     
-    def users_favorite_route_params
-      params.require(:users_favorite_route).permit(:vehicle_route_id)
+    def user_favorite_route_params
+      params.require(:user_favorite_route).permit(:vehicle_route_id)
     end
 
 end
