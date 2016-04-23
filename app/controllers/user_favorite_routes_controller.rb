@@ -4,7 +4,19 @@ class UserFavoriteRoutesController < ApplicationController
   # GET /user_favorite_routes
   # GET /user_favorite_routes.json
   def index
-    @user_favorite_routes = UserFavoriteRoute.all
+    @user_favorite_routes = UserFavoriteRoute.paginate(:page => params[:page], :per_page => 15)
+    
+    respond_to do |format|
+      format.html { render :index }
+      format.json {
+        render :json => {
+          :current_page => @user_favorite_routes.current_page,
+          :per_page => @user_favorite_routes.per_page,
+          :total_entries => @user_favorite_routes.total_entries,
+          :entries => @user_favorite_routes
+        }
+      }
+    end
   end
 
   # GET /user_favorite_routes/1
