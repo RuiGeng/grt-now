@@ -9,7 +9,7 @@
       <th>Vehicle stop</th>
       <th>Vehicle trip</th>
       <th>Sequence</th>
-      <th colspan="3"></th>
+      <th class="options"></th>
     </tr>
   </thead>
 
@@ -20,12 +20,13 @@
         <td><%= vehicle_stop_time.vehicle_stop.name %></td>
         <td><%= vehicle_stop_time.vehicle_trip.name %></td>
         <td><%= vehicle_stop_time.sequence %></td>
-        <td><%= link_to 'Show', vehicle_stop_time %></td>
-        <td><%= link_to 'Edit', edit_vehicle_stop_time_path(vehicle_stop_time) %></td>
-        <td><%= link_to 'Destroy', vehicle_stop_time, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Edit', edit_vehicle_stop_time_path(vehicle_stop_time), :class => 'btn btn-xs btn-info'  %>
+          <%= link_to 'Destroy', vehicle_stop_time, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= will_paginate @vehicle_trips, renderer: BootstrapPagination::Rails %>
+<%= will_paginate @vehicle_stop_times, renderer: BootstrapPagination::Rails %>

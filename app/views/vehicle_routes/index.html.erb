@@ -1,15 +1,28 @@
-<h1>Manage All Vehicle Routes</h1>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <% if @vehicle_routes.any? %>
-        <h3>Number of Vehicle Routes: <%= @vehicle_routes.count %></h3>
-        <ol class="routes">
-          <%= render @vehicle_routes %>
-        </ol>
-        <%= will_paginate @vehicle_routes %>
-      <% end %>
-    </div>
-  </div>
+<div class="page-header">
+  <h1>Listing Vehicle Routes</h1>
 </div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th class="options"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehicle_routes.each do |vehicle_route| %>
+      <tr>
+        <td><%= vehicle_route.id %></td>
+        <td><%= vehicle_route.long_name %></td>
+        <td>
+          <%= link_to 'Edit', edit_vehicle_route_path(vehicle_route), :class => 'btn btn-xs btn-info' %>
+          <%= link_to 'Destroy', vehicle_route, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @vehicle_routes, renderer: BootstrapPagination::Rails %>

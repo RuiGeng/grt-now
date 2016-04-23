@@ -1,15 +1,32 @@
-<h1>Manage All Trips</h1>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <% if @vehicle_trips.any? %>
-        <h3>Number of Trips: <%= @vehicle_trips.count %></h3>
-        <ol class="trips">
-          <%= render @vehicle_trips %>
-        </ol>
-        <%= will_paginate @vehicle_trips %>
-      <% end %>
-    </div>
-  </div>
+<div class="page-header">
+  <h1>Listing Trips</h1>
 </div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Route Name</th>
+      <th>Service</th>
+      <th>Trip Name</th>
+      <th>Direction</th>
+      <th class="options"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehicle_trips.each do |vehicle_trip| %>
+      <tr>
+        <td><%= vehicle_trip.vehicle_route.long_name %></td>
+        <td><%= vehicle_trip.service %></td>
+        <td><%= vehicle_trip.name %></td>
+        <td><%= vehicle_trip.direction %></td>
+        <td>
+          <%= link_to 'Edit', edit_vehicle_trip_path(vehicle_trip), :class => 'btn btn-xs btn-info' %>
+          <%= link_to 'Destroy', vehicle_trip, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @vehicle_trips, renderer: BootstrapPagination::Rails %>

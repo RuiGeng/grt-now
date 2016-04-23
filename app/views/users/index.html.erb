@@ -1,14 +1,30 @@
-<h1>Manage All Users</h1>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <% if @users.any? %>
-        <h3>Number of Users: <%= @users.count %></h3>
-        <ol class="users">
-          <%= render @users %>
-        </ol>
-      <% end %>
-    </div>
-  </div>
+<div class="page-header">
+  <h1>Listing Users</h1>
 </div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Timestamp</th>
+      <th class="options"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td>Created <%= time_ago_in_words(user.created_at) %> ago.</td>
+        <td>
+          <%= link_to 'Edit', edit_user_path(user), :class => 'btn btn-xs btn-info' %>
+          <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @users, renderer: BootstrapPagination::Rails %>
