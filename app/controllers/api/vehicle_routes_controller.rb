@@ -2,12 +2,12 @@ class Api::VehicleRoutesController < ApplicationController
   skip_before_filter :authenticate_user!
 
   def index
-    @vehicle_routes = VehicleRoute.paginate(:page => params[:page])
+    @vehicle_routes = VehicleRoute.all
     
     render :json => {
-      :current_page => @vehicle_routes.current_page,
-      :per_page => @vehicle_routes.per_page,
-      :total_entries => @vehicle_routes.total_entries,
+      :current_page => nil,
+      :per_page => nil,
+      :total_entries => nil,
       :entries => @vehicle_routes
     }
   end

@@ -5,14 +5,14 @@ class Api::UsersFavoriteRoutesController < ApplicationController
 
   def index
     if @current_user
-        @vehicle_routes = UserFavoriteRoute.where(:user_id => @current_user.id).paginate(:page => params[:page], :per_page => 10)
+        @vehicle_routes = UserFavoriteRoute.where(:user_id => @current_user.id).group("vehicle_route_id")
         
         render :json => {
-          :current_page => @vehicle_routes.current_page,
-          :per_page => @vehicle_routes.per_page,
-          :total_entries => @vehicle_routes.total_entries,
+          :current_page => nil,
+          :per_page => nil,
+          :total_entries => nil,
           :entries => @vehicle_routes
-        }
+        }, :include => [:vehicle_route]
     else
         render json: nil
     end
@@ -42,7 +42,7 @@ class Api::UsersFavoriteRoutesController < ApplicationController
     end
     
     def user_favorite_route_params
-      params.require(:user_favorite_route).permit(:vehicle_route_id)
+      params.permit(:vehicle_route_id)
     end
 
 end
