@@ -13,6 +13,8 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/Materialize/bin/materialize.css" />
+    <link rel="stylesheet" href="bower_components/angucomplete-alt/angucomplete-alt.css" />
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -32,11 +34,15 @@
           <a id="logo-container" href="#" class="brand-logo">GRT.Now</a>
 
           <ul class="right hide-on-med-and-down">
-            <li><a href="#">About</a></li>
 
-            <li ng-show="isAuthenticated()">Hello {{ user.name }} <a ng-click="logout()">(Logout)</a></li>
+            <li ng-show="isAuthenticated()">
+              Hello {{ user.name }}!
+              <a ui-sref="favorite-routes">My favorite routes</a>
+              <a ng-click="logout()">(Logout)</a>
+            </li>
 
             <li ng-hide="isAuthenticated()">
+              <a href="#">About</a>
               <a href="#" ng-click="authenticate('google')">Login / Register</a>
             </li>
           </ul>
@@ -57,54 +63,13 @@
         <div ui-view></div>
       </div>
 
-      <div class="pos-rel" ng-class="{'col s9': sidebar.active}">
-
-        <div class="card-panel search-box pos-abs">
-          <form class="">
-            <div class="row">
-              <div class="input-field col s7">
-                <input placeholder="Search for routes" id="first_name" type="text" class="validate" ng-model="search">
-                <label for="first_name">Search for routes</label>
-              </div>
-              <div class="input-field col">
-                <button class="btn">Search</button>
-              </div>
-            </div>
-          </form>
-        </div>
-
-        <ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options">
-          <ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="onClick">
-            <ui-gmap-windows show="show" templateUrl="'markers.window.tpl.html'" templateParameter="'templateParameters'">
-
-              <div ng-controller="WindowCtrl">
-                <div ng-non-bindable>
-                  <h5>{{ title }}</h5>
-                  <div class="divider"></div>
-
-                  <div class="row">
-                    <h6>Last update: {{ lastUpdate | date:'medium' }}</h6>
-                  </div>
-                </div>
-
-                <div class="row center">
-                  <a class="btn waves-effect waves-light" ui-sref="trips({trip_id: $parent.model.trip_id})">See bus stops</a>
-                  <a class="btn waves-effect waves-light" ng-click="onAddFavoriteClick($parent.model.trip_id)">Add as favorite</a>
-                </div>
-              </div>
-
-              </ui-gmap-window>
-          </ui-gmap-markers>
-        </ui-gmap-google-map>
+      <div class="pos-rel maincontent" ng-class="{'col s9': sidebar.active}">
+        <div ng-include="'views/main.html'"></div>
       </div>
 
+      <div id="sidenav-overlay" ng-show="sidebar.active" class="" style="opacity: 1;"></div>
+
     </div>
-
-
-
-
-
-
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -133,6 +98,8 @@
     <script src="bower_components/satellizer/satellizer.js"></script>
     <script src="bower_components/angular-cookie/angular-cookie.js"></script>
     <script src="bower_components/ng-token-auth/dist/ng-token-auth.js"></script>
+    <script src="bower_components/angucomplete-alt/angucomplete-alt.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -146,6 +113,7 @@
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/trips.js"></script>
     <script src="scripts/controllers/stops.js"></script>
+    <script src="scripts/controllers/favoriteroutes.js"></script>
         <!-- endbuild -->
 </body>
 </html>

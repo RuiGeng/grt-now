@@ -3,18 +3,18 @@
  */
 
 angular.module('grtNowApp')
-  .controller('NavbarCtrl', function ($scope, Sidebar, $interval, $auth, User, $location) {
+  .controller('NavbarCtrl', function ($scope, Sidebar, $interval, $auth, User, toastr) {
 
     $scope.user = {};
 
     $scope.authenticate = function(provider) {
       $auth.authenticate(provider).then(function(response) {
-          console.log(response.data);
           $auth.setToken(response);
           $scope.user.name = response.data.name;
         })
         .catch(function(response) {
-          console.log('errror: ', response);
+          toastr.error("Could not login you.", "Oh no!");
+          console.log('error: ', response);
         });
 
     };

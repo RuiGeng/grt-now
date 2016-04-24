@@ -1,0 +1,35 @@
+<div class="row" ng-show="!routes.spinner">
+  <div class="col s10">
+    <span>My favorite routes</span>
+  </div>
+  <div class="col s2 right-align">
+    <a ui-sref="main"><i class="material-icons">close</i></a>
+  </div>
+</div>
+
+<div class="row" ng-show="!routes.spinner">
+  <div class="col s12">
+    <span>Routes</span>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="s12 center" ng-show="routes.spinner">
+    <div class="preloader-wrapper small active">
+      <div class="spinner-layer spinner-green-only">
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="collection" ng-show="!routes.spinner">
+    <li class="collection-item" ng-repeat="route in routes.entries">
+      <span># {{ route.vehicle_route.id }}</span>
+      <br />
+      <small>{{ route.vehicle_route.long_name }}</small>
+    </li>
+  </ul>
+</div>

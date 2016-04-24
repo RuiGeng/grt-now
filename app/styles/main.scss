@@ -52,3 +52,33 @@
 .search-box button {
   margin-top: 10px;
 }
+
+@media screen and (min-width: 768px) {
+  #sidenav-overlay {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search-box {
+    width: 333px;
+  }
+
+  .sidebar {
+    width: 310px !important;
+    float: none;
+    position: absolute;
+    z-index: 11;
+    background: #fff;
+    top: -10px;
+    padding-top: 20px !important;
+  }
+
+  .maincontent {
+    width: 100% !important;
+  }
+
+  #sidenav-overlay {
+    z-index: 9;
+  }
+}

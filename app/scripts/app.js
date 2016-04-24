@@ -10,26 +10,32 @@
  */
 angular
   .module('grtNowApp', [
-    'ngAnimate', 'ui.router', 'uiGmapgoogle-maps', 'Api', 'angular.filter',  'satellizer'//'ng-token-auth''satellizer'
-  ]).config(function($urlRouterProvider, $stateProvider, uiGmapGoogleMapApiProvider, $authProvider) {
+    'ngAnimate', 'ui.router', 'uiGmapgoogle-maps', 'Api', 'angular.filter',  'satellizer', 'angucomplete-alt', 'ngAnimate', 'toastr'
+  ])
+  .constant('apiUrl', 'http://localhost:3000/api')
+  .config(function($urlRouterProvider, $stateProvider, uiGmapGoogleMapApiProvider, $authProvider, apiUrl) {
 
-      $authProvider.baseUrl = 'https://grtnow-manelpb.c9users.io/';
+      $authProvider.baseUrl = apiUrl;
 
       $authProvider.google({
-        url: 'api/auth/authenticate?provider=google',
+        url: 'auth/authenticate?provider=google',
         clientId: '674449033922-u0k8no0grpkclntu0garorb3fvgfqk33.apps.googleusercontent.com'
       });
 
       $stateProvider
         .state('main', {
           url: '/',
-          controller: "MainCtrl",
-          templateUrl: "views/main.html"
+          controller: 'MainCtrl'
         })
         .state('trips', {
           url: '/trips/:trip_id',
           templateUrl: "views/trip_info.html",
           controller: "TripsCtrl"
+        })
+        .state('favorite-routes', {
+          url: '/favorite-routes',
+          templateUrl: "views/favoriteroutes.html",
+          controller: "FavoriteRoutesCtrl"
         })
         .state('stops', {
           url: '/stops/:stop_id',

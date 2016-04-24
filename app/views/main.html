@@ -1,0 +1,57 @@
+<div class="card-panel search-box pos-abs">
+  <form class="">
+    <div class="row">
+      <div class="input-field col s7">
+
+        <angucomplete-alt id="ex2"
+                          placeholder="Search for routes"
+                          pause="300"
+                          selected-object="selectedRoute"
+                          local-data="busRoutes"
+                          local-search="localSearch"
+                          title-field="id"
+                          description-field="long_name"
+                          minlength="1"
+                          input-class="form-control form-control-small"
+                          match-class="highlight" />
+
+
+        <!-- input placeholder="Search for routes" id="first_name" type="text" class="validate" ng-model="search" -->
+
+      </div>
+      <div class="input-field col">
+        <button class="btn" ng-click="onSearchClick">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options">
+  <ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="onMarkerClick">
+    <ui-gmap-windows show="show" templateUrl="'markers.window.tpl.html'" templateParameter="'templateParameters'">
+
+      <div ng-controller="WindowCtrl">
+        <div ng-non-bindable>
+          <h5>{{ title }}</h5>
+          <div class="divider"></div>
+
+          <div class="row">
+            <h6>Last update: {{ lastUpdate | date:'medium' }}</h6>
+          </div>
+
+          <div class="row">
+            <h6>Route: {{ route }}</h6>
+          </div>
+        </div>
+
+        <div class="row center">
+          <a class="btn waves-effect waves-light" ui-sref="trips({trip_id: $parent.model.trip_id})">See bus stops</a>
+
+          <a ng-show="isAuthenticated()" class="btn waves-effect waves-light" ng-click="onAddFavoriteClick($parent.model.route_id)">Add as favorite</a>
+          <a ng-show="!isAuthenticated()" class="btn waves-effect waves-light disabled" ng-click="onAddFavoriteGuestClick()">Add as favorite</a>
+        </div>
+      </div>
+
+      </ui-gmap-window>
+  </ui-gmap-markers>
+</ui-gmap-google-map>

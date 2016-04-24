@@ -10,20 +10,16 @@
 
 
 angular.module('grtNowApp')
-  .controller('MainCtrl', function ($scope, uiGmapGoogleMapApi, uiGmapObjectIterators, VehicleStops, VehicleRealtimes, Sidebar, $interval, $rootScope) {
-    $scope.markers = {};
-
-
-    $rootScope.$on('auth:login-success', function(ev, user) {
-      alert('Welcome ', user.email);
-    });
-
-
+  .controller('MainCtrl', function ($scope, $stateParams, uiGmapGoogleMapApi, uiGmapObjectIterators, VehicleRoutes, VehicleStops, VehicleRealtimes, Sidebar, $interval, $rootScope) {
     var vehicles = [];
     var stops = [];
 
-    Sidebar.active = 0;
+    $scope.markers = {};
+    $scope.busRoutes = [];
+    $scope.routeSearched = $stateParams.route_id || null;
+
     $scope.sidebar = Sidebar;
+    $scope.sidebar.active = 0;
 
     $scope.updateMarkersBusStops = function() {
 
@@ -47,22 +43,53 @@ angular.module('grtNowApp')
 
     };
 
-    $scope.updateMarkersRealtime = function() {
+    $scope.loadRoutes = function() {
+      VehicleRoutes.list(function(data) {
+        $scope.busRoutes = data.entries;
+      });
+    };
+
+    $scope.updateMarkersRealtime = function(route) {
 
       VehicleRealtimes.list(function(data) {
         var i = 0;
 
+        if(route) {
+          $scope.markers = [];
+          vehicles = [];
+        }
+
         data.entries.map(function(entry) {
+
           if(!vehicles[i] || vehicles[i].latitude != entry.lat || vehicles[i].longitude != entry.long) {
-            vehicles[i] = {
-              'id': entry.id,
-              'latitude': entry.lat,
-              'longitude': entry.long,
-              'trip_id': entry.vehicle_trip_id,
-              'icon': 'images/bus.png',
-              'title': entry.vehicle_trip.name,
-              'lastUpdate': entry.updated_at
-            };
+
+            if(route) {
+              if(route.title == entry.vehicle_route_id) {
+                vehicles[i] = {
+                  'id': entry.id,
+                  'latitude': entry.lat,
+                  'longitude': entry.long,
+                  'route': entry.vehicle_route_id + ' ' + entry.vehicle_route.long_name,
+                  'route_id': entry.vehicle_route_id,
+                  'trip_id': entry.vehicle_trip_id,
+                  'icon': 'images/bus.png',
+                  'title': entry.vehicle_trip.name,
+                  'lastUpdate': entry.updated_at
+                };
+              }
+            } else {
+              vehicles[i] = {
+                'id': entry.id,
+                'latitude': entry.lat,
+                'longitude': entry.long,
+                'route': entry.vehicle_route_id + ' ' + entry.vehicle_route.long_name,
+                'route_id': entry.vehicle_route_id,
+                'trip_id': entry.vehicle_trip_id,
+                'icon': 'images/bus.png',
+                'title': entry.vehicle_trip.name,
+                'lastUpdate': entry.updated_at
+              };
+            }
           }
 
           i++;
@@ -80,22 +107,39 @@ angular.module('grtNowApp')
     $scope.map = { center: { latitude: 43.453669, longitude: -80.507135 }, zoom: 12, options: { mapTypeControl: false } };
 
     uiGmapGoogleMapApi.then(function(maps) {
-      $scope.updateMarkersRealtime();
+      $scope.updateMarkersRealtime(null);
       $scope.updateMarkersBusStops();
+      $scope.loadRoutes();
 
-      /*$interval(function() {
+      $interval(function() {
         $scope.updateMarkersRealtime();
-      }, 5000);*/
+      }, 5000);
     });
 
-    $scope.onSidebarClick = function() {
-      console.log(1);
+    $scope.onMarkerClick = function(marker, eventName, model) {
+      model.show = !marker.model.show;
+      $scope.$apply();
     };
 
-    $scope.onClick = function(marker, eventName, model) {
-      model.show = !marker.model.show;
-      console.log(model);
-      $scope.$apply();
+    $scope.onSearchClick = function() {
+      if($scope.routeSearched)
+        $scope.updateMarkersRealtime($scope.routeSearched);
+    };
+
+    $scope.localSearch = function(str) {
+      var matches = [];
+
+      $scope.busRoutes.forEach(function(route) {
+        if ((route.long_name.toLowerCase().indexOf(str.toString().toLowerCase()) >= 0) || (route.id.toString().indexOf(str.toString()) >= 0) ) {
+          matches.push(route);
+        }
+      });
+      return matches;
+    };
+
+    $scope.selectedRoute = function(selected) {
+      $scope.routeSearched = selected;
+      $scope.updateMarkersRealtime(selected);
     };
 
   });

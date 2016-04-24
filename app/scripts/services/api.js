@@ -1,7 +1,4 @@
 angular.module('Api', ['ngResource'])
-  .factory('apiUrl', ['$window', function($window) {
-    return 'https://grtnow-manelpb.c9users.io/api';
-  }])
   .factory('VehicleRealtimes', ['apiUrl', '$resource', function(apiUrl, $resource){
     return $resource(apiUrl + '/vehicle_realtimes', {}, {
       list: {method:'GET', params:{}}
@@ -9,6 +6,11 @@ angular.module('Api', ['ngResource'])
   }])
   .factory('VehicleStops', ['apiUrl', '$resource', function(apiUrl, $resource){
     return $resource(apiUrl + '/vehicle_stops', {}, {
+      list: {method:'GET', params:{}}
+    });
+  }])
+  .factory('VehicleRoutes', ['apiUrl', '$resource', function(apiUrl, $resource){
+    return $resource(apiUrl + '/vehicle_routes', {}, {
       list: {method:'GET', params:{}}
     });
   }])
@@ -29,8 +31,15 @@ angular.module('Api', ['ngResource'])
   }])
   .factory('UserFavorites', ['apiUrl', '$resource', '$auth', function(apiUrl, $resource, $auth){
     return $resource(apiUrl + '/user/favorite_routes', {}, {
-      list: {
+      save: {
         method:'POST',
+        headers: {
+          'Authorization': $auth.getToken() || null
+        }
+      },
+      query: {
+        method: "GET",
+        isArray: false,
         headers: {
           'Authorization': $auth.getToken() || null
         }
