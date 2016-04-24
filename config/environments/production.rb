@@ -78,6 +78,4 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
-  config.secret_key = '1c409ffa30746ea869ab4ebf7c1f751445a7e821cff77e6c29d456f8a1a9adb0117b197e5fa80285f0967cb9e133a051dee335192f82d6889e4731204e059334'
 end
