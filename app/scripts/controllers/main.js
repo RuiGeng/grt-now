@@ -96,6 +96,7 @@ angular.module('grtNowApp')
         });
 
         $scope.markers = vehicles;
+        console.log(vehicles.length);
 
         // remove old elements
         if(data.entries.length < vehicles.length) {
@@ -107,13 +108,13 @@ angular.module('grtNowApp')
     $scope.map = { center: { latitude: 43.453669, longitude: -80.507135 }, zoom: 12, options: { mapTypeControl: false } };
 
     uiGmapGoogleMapApi.then(function(maps) {
-      $scope.updateMarkersRealtime(null);
+      $scope.updateMarkersRealtime($scope.routeSearched);
       $scope.updateMarkersBusStops();
       $scope.loadRoutes();
 
       $interval(function() {
-        $scope.updateMarkersRealtime();
-      }, 5000);
+        $scope.updateMarkersRealtime($scope.routeSearched);
+      }, 10000);
     });
 
     $scope.onMarkerClick = function(marker, eventName, model) {

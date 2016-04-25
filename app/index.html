@@ -42,18 +42,16 @@
             </li>
 
             <li ng-hide="isAuthenticated()">
-              <a href="#">About</a>
+              <a ui-sref="about">About</a>
               <a href="#" ng-click="authenticate('google')">Login / Register</a>
             </li>
           </ul>
 
           <ul id="nav-mobile" class="side-nav">
             <li><a href="#" ng-click="authenticate('google')">Login</a></li>
-            <li><a href="#">Register</a></li>
             <li><a href="#">About</a></li>
           </ul>
-
-          <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+          
         </div>
       </div>
     </nav>
@@ -67,7 +65,7 @@
         <div ng-include="'views/main.html'"></div>
       </div>
 
-      <div id="sidenav-overlay" ng-show="sidebar.active" class="" style="opacity: 1;"></div>
+      <div id="sidenav-overlay" ng-show="sidebar.active" class=""></div>
 
     </div>
 
@@ -96,8 +94,6 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
     <script src="bower_components/satellizer/satellizer.js"></script>
-    <script src="bower_components/angular-cookie/angular-cookie.js"></script>
-    <script src="bower_components/ng-token-auth/dist/ng-token-auth.js"></script>
     <script src="bower_components/angucomplete-alt/angucomplete-alt.js"></script>
     <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
     <!-- endbower -->
@@ -114,6 +110,7 @@
     <script src="scripts/controllers/trips.js"></script>
     <script src="scripts/controllers/stops.js"></script>
     <script src="scripts/controllers/favoriteroutes.js"></script>
+    <script src="scripts/controllers/about.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -12,7 +12,7 @@ angular
   .module('grtNowApp', [
     'ngAnimate', 'ui.router', 'uiGmapgoogle-maps', 'Api', 'angular.filter',  'satellizer', 'angucomplete-alt', 'ngAnimate', 'toastr'
   ])
-  .constant('apiUrl', 'http://localhost:3000/api')
+  .constant('apiUrl', 'http://grtnow.nexxtserver.net/api')
   .config(function($urlRouterProvider, $stateProvider, uiGmapGoogleMapApiProvider, $authProvider, apiUrl) {
 
       $authProvider.baseUrl = apiUrl;
@@ -26,6 +26,11 @@ angular
         .state('main', {
           url: '/',
           controller: 'MainCtrl'
+        })
+        .state('about', {
+          url: '/about',
+          templateUrl: "views/about.html",
+          controller: "AboutCtrl"
         })
         .state('trips', {
           url: '/trips/:trip_id',

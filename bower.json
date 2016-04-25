@@ -11,7 +11,6 @@
     "angular-ui-router": "^0.2.18",
     "angular-filter": "^0.5.8",
     "satellizer": "^0.14.0",
-    "ng-token-auth": "^0.0.28",
     "angucomplete-alt": "^2.4.1",
     "angular-toastr": "^1.7.0"
   },

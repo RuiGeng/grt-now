@@ -32,8 +32,6 @@ module.exports = function(config) {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-filter/dist/angular-filter.min.js',
       'bower_components/satellizer/satellizer.js',
-      'bower_components/angular-cookie/angular-cookie.js',
-      'bower_components/ng-token-auth/dist/ng-token-auth.js',
       'bower_components/angucomplete-alt/angucomplete-alt.js',
       'bower_components/angular-toastr/dist/angular-toastr.tpls.js',
       'bower_components/angular-mocks/angular-mocks.js',
